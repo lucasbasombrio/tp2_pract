@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-const userRoutes = Router() //que el archivo se llame igual a la const es clave para no hacerse lio
+const userRoutes = Router()
 
 userRoutes.get("/", (req,res)=>{
     res.send("get all users")
