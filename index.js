@@ -12,8 +12,8 @@ app.use(routes);
 
 app.use(errorNotFound);
 
-await connectionDb.sync({force:true}); //alter true para que haga el DDL y todo este actualizado
-                        //force:true es para que dropee y cree todo el tiempo, para desarrollar usar este
+await connectionDb.sync({alter:true}); //alter true para que haga el DDL y todo este actualizado
+                        //force:true es para que dropee y cree todo el tiempo
 app.listen(8080, () => {
   console.log("🚀 listening");
 });
