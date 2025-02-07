@@ -87,33 +87,14 @@ class UserController {
       const { mail, password } = req.body;
       const data = await User.findOne({ where: { mail } });
       if (!data) throw new Error("No pasas");
-      const validatePassword = await data.validatePassword(password);
+      const validatePassword= await data.validatePassword(password)
       if (!validatePassword) throw new Error("No pasas");
-      const payload = {
-        id: data.id,
-        name: data.name,
-      };
-      const token = generateToken(payload);
-      res.cookie("token", token);
-      res.status(200).send({
-        success: true,
-        message: "usuario logueado con exito",
-      });
-    } catch (error) {
-      res.status(400).send({ succces: false, message: error.message });
-    }
-  };
 
-  me = async (req, res) => {
-    try {
-      // const { token } = req.cookies;
-      // if (!token) throw new Error("No pasas");
-      // const { payload } = verifyToken(token);
-      const { user } = req;
-      //console.log(`🚀 ~ UserController ~ me= ~ user:`, user)
+      
+
       res.status(200).send({
-        success: true,
-        message: user,
+        succces: true,
+        message: data,
       });
     } catch (error) {
       res.status(400).send({ succces: false, message: error.message });

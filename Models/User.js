@@ -2,7 +2,13 @@ import { DataTypes, Model } from "sequelize";
 import connectionDb from "../connection/connectionDb.js";
 import bcrypt from "bcrypt";
 
-class User extends Model {}
+class User extends Model {
+
+   validatePassword = async(password)=>{
+    const validate = bcrypt.compare(password, this.password)
+    return validate;
+  }
+}
 
 User.init(          //modelo sql en js
   {
