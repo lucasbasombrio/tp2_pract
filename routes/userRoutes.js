@@ -10,10 +10,14 @@ const userRoutes = Router();
 
 userRoutes.post("/", userController.createUser);
 userRoutes.post("/login", userController.login )
+userRoutes.post("/logout", userController.logout);
+
 userRoutes.use(vallidateLogin);
+
 userRoutes.get("/", userController.readAllUser);
 userRoutes.get("/me", userController.me);
 userRoutes.get("/:id", userController.readUserById);
+
 userRoutes.delete("/:id", userController.deleteUser);
 userRoutes.put("/:id", userController.updateUser);
 

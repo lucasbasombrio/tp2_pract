@@ -107,6 +107,15 @@ class UserController {
     }
   };
 
+  logout = async (req, res) => {
+    try {
+      res.clearCookie("token", { httpOnly: true, secure: true, sameSite: "strict" });
+      res.status(200).send({ success: true, message: "Logout exitoso" });
+    } catch (error) {
+      res.status(500).send({ success: false, message: error.message });
+    }
+  };
+
   me = async (req, res) => {
     console.log(
       "🚀 ~ UserControllerrrrrrr ~ me=async ~ req:",
